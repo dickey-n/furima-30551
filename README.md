@@ -23,13 +23,13 @@
 
 | Column          | Type      | Options                        |
 | --------------- | --------- | ------------------------------ |
-| name            | text      | null: false                    |
+| name            | string    | null: false                    |
 | text            | text      | null: false                    |
-| categories      | string    | null: false                    |
-| status          | string    | null: false                    |
-| delivery_charge | string    | null: false                    |
-| delivery_area   | string    | null: false                    |
-| day_to_delivery | string    | null: false                    |
+| categories      | integer   | null: false                    |
+| status          | integer   | null: false                    |
+| delivery_charge | integer   | null: false                    |
+| delivery_area   | integer   | null: false                    |
+| day_to_delivery | integer   | null: false                    |
 | price           | integer   | null: false                    |
 | user            | reference | null: false, foreign_key: true |
 
@@ -42,9 +42,6 @@
 
 | Column             | Type          | Options                        |
 | ------------------ | ------------- | ------------------------------ |
-| credit_card_number | integer       | null: false                    |
-| expiration_date    | integer       | null: false                    |
-| security_code      | integer       | null: false                    |
 | user               | references    | null: false, foreign_key: true |
 | items              | references    | null: false, foreign_key: true |
 
@@ -56,15 +53,14 @@
 
 ## Shipment テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| post_code     | integer    | null: false                    |
-| prefectures   | string     | null: false                    |
-| city_town     | string     | null: false                    |
-| address       | text       | null: false                    |
-| building_name | text       |                                |
-| phone_number  | integer    | null: false                    |
-| order         | references | null: false, foreign_key: true |
+| Column        | Type    | Options                        |
+| ------------- | ------- | ------------------------------ |
+| post_code     | string  | null: false                    |
+| prefectures   | integer | null: false                    |
+| city_town     | string  | null: false                    |
+| address       | string  | null: false                    |
+| building_name | string  |                                |
+| phone_number  | string  | null: false                    |
 
 
 ### Association
