@@ -49,7 +49,7 @@
 
 - has_one    :shipment
 - belongs_to :user
-- belongs_to :order
+- belongs_to :item
 
 ## Shipment テーブル
 
