@@ -7,7 +7,6 @@ class User < ApplicationRecord
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
   zenkaku = /\A[ぁ-んァ-ン一-龥]/
   katakana = /\A[ァ-ヶー－]+\z/
-  
 
   validates :nickname, presence: true
   validates :password, presence: true, format: {with: VALID_PASSWORD_REGEX, message: "Include both letters and numbers"}
