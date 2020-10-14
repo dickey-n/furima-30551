@@ -1,14 +1,17 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :category
+
   VALID_NUMBER = /\A[0-9]+\z/
   VALID_RANGE = 
 
   validates :name, presence: true
   validates :text, presence: true
-  validates :category_id, presence: true
-  validates :status_id, presence: true
-  validates :delivery_charge_id, presence: true
-  validates :delivery_area_id, presence: true
-  validates :day_to_delivery_id, presence: true
+  validates :category_id, presence: true, numericality: { other_than: 1 } 
+  validates :status_id, presence: true, numericality: { other_than: 1 } 
+  validates :delivery_charge_id, presence: true, numericality: { other_than: 1 } 
+  validates :delivery_area_id, presence: true, numericality: { other_than: 1 } 
+  validates :day_to_delivery_id, presence: true, numericality: { other_than: 1 } 
   validates :price, presence: true, 
   format: {with: VALID_NUMBER, message: 'Price Half-width number'}
   {
