@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :category
   belongs_to_active_hash :status
   belongs_to_active_hash :delivery_charge
+  belongs_to_active_hash :delivery_area
 
   VALID_NUMBER = /\A[0-9]+\z/
   VALID_RANGE = 
