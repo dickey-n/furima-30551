@@ -8,8 +8,8 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   VALID_NUMBER = /\A[0-9]+\z/
-  VALID_RANGE = 
 
+  validates :image, presence: true
   validates :name, presence: true
   validates :text, presence: true
   validates :category_id, presence: true, numericality: { other_than: 1 } 
