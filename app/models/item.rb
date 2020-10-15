@@ -7,21 +7,23 @@ class Item < ApplicationRecord
   belongs_to_active_hash :day_to_delivery
   has_one_attached :image
 
-  VALID_NUMBER = /\A[0-9]+\z/
-
   validates :image, presence: true
   validates :name, presence: true
   validates :text, presence: true
-  validates :category_id, presence: true, numericality: { other_than: 1 } 
-  validates :status_id, presence: true, numericality: { other_than: 1 } 
-  validates :delivery_charge_id, presence: true, numericality: { other_than: 1 } 
-  validates :delivery_area_id, presence: true, numericality: { other_than: 1 } 
-  validates :day_to_delivery_id, presence: true, numericality: { other_than: 1 } 
-  validates :price, presence: true, 
-  format: {with: VALID_NUMBER, message: 'Price Half-width number'}
-  {
-    :greater_than_or_equal_to => 300,
-    :less_than_or_equal_to => 9999999,
-    message: 'Price Out of setting range' 
-  }
+
+  VALID_NUMBER = /[0-9]\d/
+
+  validates :price, presence: true
+  validates :price, format: { with: VALID_NUMBER, message: 'Half width number' }
+  validates_inclusion_of :price, in: 300..9999999, message: "Out of setting range"
+
+  validates :category_id, presence: true, numericality: { other_than: 1, message: 'Select' }
+  validates :status_id, presence: true, numericality: { other_than: 1, message: 'Select' } 
+  validates :delivery_charge_id, presence: true, numericality: { other_than: 1, message: 'Select' } 
+  validates :delivery_area_id, presence: true, numericality: { other_than: 1,  message: 'Select' } 
+  validates :day_to_delivery_id, presence: true, numericality: { other_than: 1, message: 'Select' }
+
+  # validates :first_name, presence: true, format: { with: VALID_NAME, message: 'Full-width characters' }
+
+
 end
