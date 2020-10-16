@@ -11,19 +11,17 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :text, presence: true
 
-  VALID_NUMBER = /[0-9]\d/
+  VALID_NUMBER = /[0-9]\d/.freeze
 
   validates :price, presence: true
   validates :price, format: { with: VALID_NUMBER, message: 'Half width number' }
-  validates_inclusion_of :price, in: 300..9999999, message: "Out of setting range"
+  validates_inclusion_of :price, in: 300..9_999_999, message: 'Out of setting range'
 
   validates :category_id, presence: true, numericality: { other_than: 1, message: 'Select' }
-  validates :status_id, presence: true, numericality: { other_than: 1, message: 'Select' } 
-  validates :delivery_charge_id, presence: true, numericality: { other_than: 1, message: 'Select' } 
-  validates :delivery_area_id, presence: true, numericality: { other_than: 1,  message: 'Select' } 
+  validates :status_id, presence: true, numericality: { other_than: 1, message: 'Select' }
+  validates :delivery_charge_id, presence: true, numericality: { other_than: 1, message: 'Select' }
+  validates :delivery_area_id, presence: true, numericality: { other_than: 1, message: 'Select' }
   validates :day_to_delivery_id, presence: true, numericality: { other_than: 1, message: 'Select' }
 
   # validates :first_name, presence: true, format: { with: VALID_NAME, message: 'Full-width characters' }
-
-
 end

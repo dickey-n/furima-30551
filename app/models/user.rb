@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  VALID_NAME = /\A[ぁ-んァ-ン一-龥]/
-  VALID_NAME_KANA = /\A[ァ-ヶー－]+\z/
+  VALID_NAME = /\A[ぁ-んァ-ン一-龥]/.freeze
+  VALID_NAME_KANA = /\A[ァ-ヶー－]+\z/.freeze
 
   validates :nickname, presence: true
   validates :password, presence: true, format: { with: VALID_PASSWORD_REGEX, message: 'Include both letters and numbers' }

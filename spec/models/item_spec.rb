@@ -35,27 +35,27 @@ RSpec.describe Item, type: :model do
       it 'Category_idで『--』を選択したときは出品できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category Select")
+        expect(@item.errors.full_messages).to include('Category Select')
       end
       it 'Status_idで『--』を選択したときは出品できない' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status Select")
+        expect(@item.errors.full_messages).to include('Status Select')
       end
       it 'Delivery_charge_idで『--』を選択したときは出品できない' do
         @item.delivery_charge_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery charge Select")
+        expect(@item.errors.full_messages).to include('Delivery charge Select')
       end
       it 'Delivery_area_idで『--』を選択したときは出品できない' do
         @item.delivery_area_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery area Select")
+        expect(@item.errors.full_messages).to include('Delivery area Select')
       end
       it 'Day_to_delivery_idで『--』を選択したとき出品できない' do
         @item.day_to_delivery_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Day to delivery Select")
+        expect(@item.errors.full_messages).to include('Day to delivery Select')
       end
       it 'Priceが空のときは出品できない' do
         @item.price = ' '
@@ -65,22 +65,22 @@ RSpec.describe Item, type: :model do
       it 'Priceが300円未満のときは出品できない' do
         @item.price = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
       it 'Priceが9,999,999円より大きいときは出品できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
       it 'Priceが全角漢字のときは出品できない' do
         @item.price = 'あいうえお'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half width number")
+        expect(@item.errors.full_messages).to include('Price Half width number')
       end
       it 'Priceが半角英字のときは出品できない' do
         @item.price = 'abcdef'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half width number")
+        expect(@item.errors.full_messages).to include('Price Half width number')
       end
     end
   end
