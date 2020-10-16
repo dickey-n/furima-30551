@@ -9,7 +9,12 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.new(params[:id])
+    @item = Item.find(params[:id])
+    @category = Category.find(params[:id])
+    @status = Status.find(params[:id])
+    @delivery_charge = DeliveryCharge.find(params[:id])
+    @delivery_area = DeliveryArea.find(params[:id])
+    @day_to_delivery = DayToDelivery.find(params[:id])
   end
 
   def create
