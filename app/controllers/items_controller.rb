@@ -11,11 +11,6 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @user = User.find(params[:id])
-    @category = Category.find(params[:id])
-    @status = Status.find(params[:id])
-    @delivery_charge = DeliveryCharge.find(params[:id])
-    @delivery_area = DeliveryArea.find(params[:id])
-    @day_to_delivery = DayToDelivery.find(params[:id])
   end
 
   def create
