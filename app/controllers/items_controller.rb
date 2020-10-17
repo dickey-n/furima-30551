@@ -8,6 +8,15 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
   def show
     @item = Item.find(params[:id])
     @user = User.find(params[:id])
@@ -20,18 +29,9 @@ class ItemsController < ApplicationController
   def update
     item = Item.find(params[:id])
     if item.update(item_params)
-      redirect_to root_path
+      redirect_to item_path(item.id)
     else
       render :edit
-    end
-  end
-
-  def create
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
-    else
-      render :new
     end
   end
 
