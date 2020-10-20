@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+
   belongs_to             :user
   belongs_to_active_hash :category
   belongs_to_active_hash :status
@@ -7,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_area
   belongs_to_active_hash :day_to_delivery
   has_one_attached       :image
+
   has_one                :order
 
   with_options presence: true do
