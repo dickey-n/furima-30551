@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
+    @order_shipment = OrderShipment.new
   end
 
   def new
@@ -13,7 +14,7 @@ class OrdersController < ApplicationController
       @order_shipment.save
       redirect_to root_path
     else
-      render action: :new
+      redirect_to item_orders_path
     end
   end
 
