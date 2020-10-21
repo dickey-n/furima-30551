@@ -17,13 +17,13 @@ class OrdersController < ApplicationController
       @order_shipment.save
       redirect_to root_path
     else
-      redirect_to item_orders_path
+      render action: :index
     end
   end
 
   private
   def order_params
-    params.permit(:item_id, :post_code, :prefecture_id, :city_town, :address, :building_name, :phone_number, :order_id, :item_id).merge(user_id: current_user.id, token: params[:token])
+    params.require(:order_shipment).permit(:post_code, :prefecture_id, :city_town, :address, :building_name, :phone_number).merge(user_id: current_user.id, token: params[:token], item_id: params[:item_id])
   end
 
   def pay_item
