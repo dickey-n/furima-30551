@@ -13,5 +13,4 @@ function price (){
     Profit.innerHTML = priceAfterFee ;
   });
 }
-window.addEventListener("load", price);
-//setInterval(price, 1000);
+setInterval(price, 1000);
