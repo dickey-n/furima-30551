@@ -1,5 +1,4 @@
 class OrderShipment
-  
   include ActiveModel::Model
   attr_accessor :token, :user_id, :item_id, :post_code, :prefecture_id, :city_town, :address, :building_name, :phone_number, :order_id
 
@@ -8,13 +7,13 @@ class OrderShipment
     validates :city_town
     validates :address
 
-    VALID_POST_CODE = /\A[0-9]{3}-[0-9]{4}\z/
-    VALID_PHONE_NUMBER = /\A\d{10,11}\z/
+    VALID_POST_CODE = /\A[0-9]{3}-[0-9]{4}\z/.freeze
+    VALID_PHONE_NUMBER = /\A\d{10,11}\z/.freeze
 
-    validates :post_code, format: {with: VALID_POST_CODE, message: "Input correctly"}
-    validates :phone_number, format: {with: VALID_PHONE_NUMBER, message:"Input only number" }
+    validates :post_code, format: { with: VALID_POST_CODE, message: 'Input correctly' }
+    validates :phone_number, format: { with: VALID_PHONE_NUMBER, message: 'Input only number' }
 
-    validates :prefecture_id, numericality: { other_than: 1, message: "Select" }
+    validates :prefecture_id, numericality: { other_than: 1, message: 'Select' }
   end
 
   def save
