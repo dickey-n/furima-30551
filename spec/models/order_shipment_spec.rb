@@ -42,6 +42,11 @@ RSpec.describe User, type: :model do
         @order_shipment.valid?
         expect(@order_shipment.errors.full_messages).to include('Prefecture Select')
       end
+      it 'Prefecture_idが空白のときは購入できない' do
+        @order_shipment.prefecture_id = ' '
+        @order_shipment.valid?
+        expect(@order_shipment.errors.full_messages).to include('Prefecture Select')
+      end
       it 'City_townが空のときは購入できない' do
         @order_shipment.city_town = ' '
         @order_shipment.valid?
@@ -61,6 +66,11 @@ RSpec.describe User, type: :model do
         @order_shipment.phone_number = 'あいうえお'
         @order_shipment.valid?
         expect(@order_shipment.errors.full_messages).to include('Phone number Input only number')
+      end
+      it 'Phone_numberが12桁以上のときは購入できない' do
+        @order_shipment.phone_number = '080999988881'
+        @order_shipment.valid?
+        expect(@order_shipment.errors)
       end
       it 'Phone_numberに"-"が入っているときは購入できない' do
         @order_shipment.phone_number = '090-8899-00'
