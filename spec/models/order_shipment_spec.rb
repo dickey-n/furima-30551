@@ -62,7 +62,7 @@ RSpec.describe User, type: :model do
         @order_shipment.valid?
         expect(@order_shipment.errors.full_messages).to include("Phone number Input only number")
       end
-      it 'Phone_numberが数字でないときは購入できない' do
+      it 'Phone_numberに"-"が入っているときは購入できない' do
         @order_shipment.phone_number = '090-8899-00'
         @order_shipment.valid?
         expect(@order_shipment.errors.full_messages).to include("Phone number Input only number")
