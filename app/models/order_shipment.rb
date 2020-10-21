@@ -4,6 +4,7 @@ class OrderShipment
   attr_accessor :token, :user_id, :item_id, :post_code, :prefecture_id, :city_town, :address, :building_name, :phone_number, :order_id
 
   with_options presence: true do
+    validates :token
     validates :city_town
     validates :address
 
