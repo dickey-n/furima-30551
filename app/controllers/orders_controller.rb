@@ -3,9 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
-    @order = Order.find_by(item_id: @item.id)
-    if current_user.id == @item.user_id || !@order.nil?
+    if current_user.id == @item.user_id || !@item.order.nil?
       redirect_to root_path
     else
       @order_shipment = OrderShipment.new
