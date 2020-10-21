@@ -8,7 +8,7 @@ class OrderShipment
     validates :address
 
     VALID_POST_CODE = /\A[0-9]{3}-[0-9]{4}\z/.freeze
-    VALID_PHONE_NUMBER = /\A\d{10,11}\z/.freeze
+    VALID_PHONE_NUMBER = /\A\d{11,11}\z/.freeze
 
     validates :post_code, format: { with: VALID_POST_CODE, message: 'Input correctly' }
     validates :phone_number, format: { with: VALID_PHONE_NUMBER, message: 'Input only number' }
